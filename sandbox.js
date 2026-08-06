@@ -14,6 +14,7 @@ async function getWorker() {
   worker = await Tesseract.createWorker('eng', 1, {
     workerPath: EXTENSION_BASE + 'lib/worker.min.js',
     corePath: EXTENSION_BASE + 'lib/',
+    workerBlobURL: false,
   });
   return worker;
 }

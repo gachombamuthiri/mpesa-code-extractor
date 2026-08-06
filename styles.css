@@ -1,0 +1,227 @@
+:root {
+  --mpesa-green: #0F8A47;
+  --mpesa-green-dark: #0A6B37;
+  --mpesa-green-light: #E7F5EC;
+  --ink: #1B2420;
+  --ink-soft: #5B6B62;
+  --line: #DCE6E0;
+  --bg: #FBFCFB;
+  --danger: #B3441E;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 320px;
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  background: var(--mpesa-green);
+  color: #fff;
+}
+
+.mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex: none;
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+}
+
+.header-text p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+}
+
+main {
+  padding: 14px 16px 4px;
+}
+
+.dropzone {
+  border: 1.5px dashed #B9CFC1;
+  border-radius: var(--radius);
+  min-height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: text;
+  background: #fff;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  outline: none;
+  padding: 10px;
+}
+
+.dropzone:focus,
+.dropzone.is-active {
+  border-color: var(--mpesa-green);
+  background: var(--mpesa-green-light);
+}
+
+.dz-empty { color: var(--ink-soft); }
+.dz-empty svg { color: #9DB6A9; margin-bottom: 4px; }
+.dz-empty p { margin: 2px 0; font-size: 12.5px; }
+.dz-empty strong { color: var(--mpesa-green-dark); }
+.dz-sub { font-size: 11px !important; color: #8A9A91; }
+
+.dz-preview {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 6px;
+  display: block;
+}
+
+.text-btn {
+  display: block;
+  margin: 8px auto 0;
+  background: none;
+  border: none;
+  color: var(--mpesa-green-dark);
+  font-size: 11.5px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 2px;
+}
+
+.status {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--line);
+  border-top-color: var(--mpesa-green);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex: none;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status.error { color: var(--danger); }
+
+.results {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-row {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.result-label {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.result-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.result-value {
+  font-family: "SF Mono", Consolas, "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.result-value.empty {
+  color: #B7C2BC;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.copy-btn {
+  flex: none;
+  background: var(--mpesa-green);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.copy-btn:hover:not(:disabled) { background: var(--mpesa-green-dark); }
+
+.copy-btn:disabled {
+  background: #D7E0DA;
+  color: #9AA79F;
+  cursor: not-allowed;
+}
+
+.copy-btn.copied { background: var(--mpesa-green-dark); }
+
+.raw-details {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.raw-details summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+.raw-details pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #F1F5F2;
+  border-radius: 6px;
+  padding: 8px;
+  margin-top: 6px;
+  font-size: 11px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.app-footer {
+  text-align: center;
+  font-size: 10px;
+  color: #9AA79F;
+  padding: 10px 16px 12px;
+}

@@ -21,10 +21,10 @@ async function getOcrWorker() {
   if (ocrWorker) return ocrWorker;
   ocrWorker = await Tesseract.createWorker('eng', 1, {
     workerPath: EXTENSION_BASE + 'lib/worker.min.js',
-    corePath: EXTENSION_BASE + 'lib/',
-    // Load the worker script directly rather than via a Blob URL, so the
-    // worker keeps the real chrome-extension:// origin and can importScripts
-    // its core/wasm files.
+    // Pointing at the exact bundled file (not a directory) skips tesseract's
+    // runtime SIMD/relaxed-SIMD feature detection, which otherwise tries to
+    // load a "relaxedsimd" core variant we don't have in lib/ and 404s.
+    corePath: EXTENSION_BASE + 'lib/tesseract-core-simd-lstm.wasm.js',
     workerBlobURL: false,
   });
   return ocrWorker;
